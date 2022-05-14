@@ -124,17 +124,16 @@
     'video video video'
     'video video video'
     'video video video'
-    'video video video'
-    'video video video'
     'trafficLight trafficLight logs';
   gap: 40px;
-  height: 700px;
+  /* height: 700px; */
 }
 
 .video {
   margin-top: 40px;
   background-color: lightgray;
   grid-area: video;
+  height: 400px;
 }
 
 .trafficLight {
