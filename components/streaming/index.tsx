@@ -3,7 +3,7 @@ import styles from "../../styles/Home.module.css";
 
 let recorder: MediaRecorder = null;
 
-const Streaming = ({}: Props) => {
+const Streaming = () => {
   const video = useRef<HTMLVideoElement>(null);
   const recordedChunks = useRef([]);
 
@@ -62,7 +62,7 @@ const Streaming = ({}: Props) => {
 
     setTimeout((event) => {
       stopAndStart();
-    }, 9000);
+    }, 4000);
   }, []);
 
   return (
