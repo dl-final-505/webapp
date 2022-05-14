@@ -1,41 +1,49 @@
 import { useEffect, useRef } from "react";
+import { Prediction } from "../../pages/api/videos";
 import styles from "../../styles/Home.module.css";
 
 let recorder: MediaRecorder = null;
 
-const Streaming = () => {
+const Streaming = ({
+  onPrediction,
+}: {
+  onPrediction: (prediction: number) => void;
+}) => {
   const video = useRef<HTMLVideoElement>(null);
   const recordedChunks = useRef([]);
 
+  const uploadVideo = () => {
+    const formData = new FormData();
+    const blob = new Blob(recordedChunks.current, {
+      type: "video/webm",
+    });
+    formData.append("video", blob);
+
+    const config: RequestInit = {
+      method: "post",
+      body: formData,
+    };
+
+    fetch(`/api/videos`, config)
+      .then((res) => res.json())
+      .then((res: Prediction) => {
+        onPrediction(res.prediction);
+      });
+  };
 
   const handleDataAvailable = (event: BlobEvent) => {
     if (event.data.size > 0) {
       recordedChunks.current = [event.data];
-      download();
+      uploadVideo();
     }
-  }
-
-  function download() {
-    var blob = new Blob(recordedChunks.current, {
-      type: "video/webm",
-    });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    document.body.appendChild(a);
-    a.style = "display: none";
-    a.href = url;
-    a.download = "test.webm";
-    a.click();
-    window.URL.revokeObjectURL(url);
-  }
-
+  };
 
   const recordVideo = (stream: MediaStream) => {
     const options = { mimeType: "video/webm; codecs=vp9" };
     recorder = new MediaRecorder(stream, options);
     recorder.ondataavailable = handleDataAvailable;
     recorder.start();
-  }
+  };
 
   useEffect(() => {
     if (navigator.mediaDevices.getUserMedia) {
@@ -56,9 +64,9 @@ const Streaming = () => {
       if (recorder?.state === "recording") {
         recorder?.stop();
         recorder?.start();
-        setTimeout(stopAndStart, 4000);        
+        setTimeout(stopAndStart, 4000);
       }
-    }
+    };
 
     setTimeout((event) => {
       stopAndStart();
@@ -66,7 +74,7 @@ const Streaming = () => {
   }, []);
 
   return (
-    <div className={styles.Streaming}>
+    <div className={styles.video}>
       <video
         ref={video}
         autoPlay={true}
