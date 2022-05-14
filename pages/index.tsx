@@ -1,11 +1,11 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import Header from '../components/header'
-import Logs from '../components/logs'
-import TrafficLight from '../components/trafficLight'
-import Video from '../components/video'
-import styles from '../styles/Home.module.css'
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import Header from "../components/header";
+import Logs from "../components/logs";
+import TrafficLight from "../components/trafficLight";
+import Video from "../components/video/video";
+import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
   return (
@@ -24,6 +24,6 @@ const Home: NextPage = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Home
+export default Home;
