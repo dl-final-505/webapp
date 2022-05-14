@@ -16,13 +16,14 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-
       <Header />
-      <Video />
-      <TrafficLight />
-      <Logs />
+      <div className={styles.mainContainer}>
+        <Video />
+        <TrafficLight />
+        <Logs />
+      </div>
     </div>
-  )
+  );
 }
 
 export default Home
