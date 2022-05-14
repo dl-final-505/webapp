@@ -26,7 +26,6 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
       <div className={styles.mainContainer}>
         <Video onPrediction={setPrediction} />
         <TrafficLight prediction={prediction} />
