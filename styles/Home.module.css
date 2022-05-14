@@ -130,7 +130,7 @@
   margin-top: 40px;
   background-color: lightgray;
   grid-area: video;
-  min-height: 400px;
+  min-height: 200px;
 }
 
 .trafficLight {
@@ -176,6 +176,13 @@
 
 .logEntry {
   border-bottom: 1px solid lightblue;
+}
+
+.videoElement {
+	/* width: 100%; */
+	height: 400px;
+  width: 100%;
+
 }
 
 @media (max-width: 600px) {
