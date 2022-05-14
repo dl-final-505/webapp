@@ -4,7 +4,6 @@ import styles from "../../styles/Home.module.css";
 import Streaming from "../streaming";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Box from "@mui/material/Box";
 
 interface FormElements extends HTMLFormControlsCollection {
   video: HTMLInputElement;

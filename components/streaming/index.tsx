@@ -2,19 +2,16 @@ import { useEffect, useRef } from "react";
 import { Prediction } from "../../pages/api/videos";
 import styles from "../../styles/Home.module.css";
 
-let recorder: MediaRecorder = null;
-
 const Streaming = ({
   onPrediction,
 }: {
   onPrediction: (prediction: number) => void;
 }) => {
   const video = useRef<HTMLVideoElement>(null);
-  const recordedChunks = useRef([]);
 
-  const uploadVideo = () => {
+  const uploadVideo = (chunks: BlobPart[]) => {
     const formData = new FormData();
-    const blob = new Blob(recordedChunks.current, {
+    const blob = new Blob(chunks, {
       type: "video/webm",
     });
     formData.append("video", blob);
@@ -33,27 +30,23 @@ const Streaming = ({
 
   const handleDataAvailable = (event: BlobEvent) => {
     if (event.data.size > 0) {
-      recordedChunks.current = [event.data];
-      uploadVideo();
+      uploadVideo([event.data]);
     }
-  };
-
-  const recordVideo = (stream: MediaStream) => {
-    const options = { mimeType: "video/webm; codecs=vp9" };
-    recorder = new MediaRecorder(stream, options);
-    recorder.ondataavailable = handleDataAvailable;
-    recorder.start();
   };
 
   useEffect(() => {
     let timerId: any = null;
+    let recorder: MediaRecorder | null = null;
     if (navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices
         .getUserMedia({ video: true })
         .then(function (stream) {
           if (video.current) {
             video.current.srcObject = stream;
-            recordVideo(stream);
+            const options = { mimeType: "video/webm; codecs=vp9" };
+            recorder = new MediaRecorder(stream, options);
+            recorder.ondataavailable = handleDataAvailable;
+            recorder.start();
           }
         })
         .catch(function (err0r) {
@@ -75,7 +68,7 @@ const Streaming = ({
 
     return () => {
       clearTimeout(timerId);
-    }
+    };
   }, []);
 
   return (
