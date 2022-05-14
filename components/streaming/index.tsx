@@ -46,6 +46,7 @@ const Streaming = ({
   };
 
   useEffect(() => {
+    let timerId: any = null;
     if (navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices
         .getUserMedia({ video: true })
@@ -64,13 +65,17 @@ const Streaming = ({
       if (recorder?.state === "recording") {
         recorder?.stop();
         recorder?.start();
-        setTimeout(stopAndStart, 4000);
+        timerId = setTimeout(stopAndStart, 4000);
       }
     };
 
-    setTimeout((event) => {
+    timerId = setTimeout((event) => {
       stopAndStart();
     }, 4000);
+
+    return () => {
+      clearTimeout(timerId);
+    }
   }, []);
 
   return (
