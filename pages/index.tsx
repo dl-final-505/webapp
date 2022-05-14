@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import { useState } from "react";
 import Header from "../components/header";
 import Logs from "../components/logs";
 import TrafficLight from "../components/trafficLight";
@@ -16,6 +17,8 @@ const logs: LogEntry[] = [
 ];
 
 const Home: NextPage = () => {
+  const [prediction, setPrediction] = useState<number>(0);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -26,8 +29,8 @@ const Home: NextPage = () => {
 
       <Header />
       <div className={styles.mainContainer}>
-        <Video />
-        <TrafficLight prediction={0.8} />
+        <Video onPrediction={setPrediction} />
+        <TrafficLight prediction={prediction} />
         <Logs logs={logs} />
       </div>
     </div>

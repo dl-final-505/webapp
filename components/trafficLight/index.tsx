@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
 import styles from "../../styles/Home.module.css";
 import LightCircle from "../lightCircle";
 
 interface Props {
-  prediction: number
+  prediction: number;
 }
 
-const TrafficLight = ({prediction}: Props) => {
+const TrafficLight = ({ prediction }: Props) => {
   return (
     <div className={styles.trafficLight}>
       <div className={styles.lightCirclesContainer}>
@@ -16,7 +15,6 @@ const TrafficLight = ({prediction}: Props) => {
           active={prediction > 0 && prediction <= 0.5}
         />
         <LightCircle
-          text="Suspicion of violence"
           color="orange"
           active={prediction > 0.5 && prediction <= 0.7}
         />
@@ -27,7 +25,7 @@ const TrafficLight = ({prediction}: Props) => {
         />
       </div>
       <h3 className={styles.lightCircleText}>
-        Prediction score = {prediction * 100}%
+        Prediction score = {Math.round(prediction * 100)}%
       </h3>
     </div>
   );

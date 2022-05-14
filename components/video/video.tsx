@@ -1,4 +1,5 @@
-import { FormEvent, useCallback } from "react";
+import { FormEvent, useCallback, useState } from "react";
+import { Prediction } from "../../pages/api/videos";
 import styles from "../../styles/Home.module.css";
 
 interface FormElements extends HTMLFormControlsCollection {
@@ -8,26 +9,40 @@ interface VideoFormElement extends HTMLFormElement {
   readonly elements: FormElements;
 }
 
-const Video = () => {
-  const submit = useCallback((e: FormEvent<VideoFormElement>) => {
-    e.preventDefault();
+const Video = ({
+  onPrediction,
+}: {
+  onPrediction: (prediction: number) => void;
+}) => {
+  const [videoStream, setVideoStream] = useState<string | undefined>();
 
-    if (!e.currentTarget.elements.video.files) {
-      return;
-    }
+  const submit = useCallback(
+    (e: FormEvent<VideoFormElement>) => {
+      e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("video", e.currentTarget.elements.video.files[0]);
+      if (!e.currentTarget.elements.video.files) {
+        return;
+      }
 
-    const config: RequestInit = {
-      method: "post",
-      body: formData,
-    };
+      const formData = new FormData();
+      const videoFile = e.currentTarget.elements.video.files[0];
+      formData.append("video", videoFile);
 
-    fetch(`/api/videos`, config)
-      .then((res) => res.json())
-      .then((res) => console.log(res));
-  }, []);
+      const config: RequestInit = {
+        method: "post",
+        body: formData,
+      };
+
+      fetch(`/api/videos`, config)
+        .then((res) => res.json())
+        .then((res: Prediction) => {
+          const src = URL.createObjectURL(videoFile);
+          setVideoStream(src);
+          onPrediction(res.prediction);
+        });
+    },
+    [onPrediction]
+  );
 
   return (
     <div className={styles.video}>
@@ -35,6 +50,7 @@ const Video = () => {
         <input type="file" name="video" accept=".mp4"></input>
         <button>Upload</button>
       </form>
+      <video src={videoStream} controls loop autoPlay muted></video>
     </div>
   );
 };
