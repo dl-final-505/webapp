@@ -19,7 +19,7 @@ const Home: NextPage = () => {
       <Header />
       <div className={styles.mainContainer}>
         <Video />
-        <TrafficLight />
+        <TrafficLight prediction={0.8}/>
         <Logs />
       </div>
     </div>

@@ -116,10 +116,14 @@
 }
 
 .mainContainer {
-  padding: 0 100px;
+  /* padding: 0 100px; */
+  width: 80%;
   margin: auto;
   display: grid;
   grid-template-areas:
+    'video video video'
+    'video video video'
+    'video video video'
     'video video video'
     'video video video'
     'trafficLight trafficLight logs';
@@ -128,8 +132,6 @@
 }
 
 .video {
-  /* width: 70%; */
-  /* height: 40%; */
   margin-top: 40px;
   background-color: lightgray;
   grid-area: video;
@@ -137,7 +139,31 @@
 
 .trafficLight {
   grid-area: trafficLight;
-  background-color: red;
+  border: 1px solid lightblue;
+  width: 100%;
+}
+
+.lightCirclesContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.lightCircleContainer {
+  margin: 20px;
+}
+
+.lightCircleText {
+  margin: auto;
+  text-align: center;
+  margin: 10px;
+}
+
+.lightCircle {
+  height: 150px;
+  width: 150px;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid lightgray;
 }
 
 .logs {
