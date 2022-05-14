@@ -6,7 +6,7 @@ interface Props {
 }
 
 const LogEntry = ({time, source}: Props) => {
-  const text = `Model predicts violence in ${source} ${time}`; 
+  const text = `Model predicts violence in ${source}, ${time}`; 
 
   return (
     <p className={styles.logEntry}>

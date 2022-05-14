@@ -1,6 +1,5 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import Header from '../components/header'
 import Logs from '../components/logs'
 import TrafficLight from '../components/trafficLight'
@@ -27,7 +26,7 @@ const Home: NextPage = () => {
       <Header />
       <div className={styles.mainContainer}>
         <Video />
-        <TrafficLight prediction={0.8}/>
+        <TrafficLight prediction={0}/>
         <Logs logs={logs}/>
       </div>
     </div>
