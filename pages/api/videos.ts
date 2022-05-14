@@ -1,17 +1,28 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
+import formidable from "formidable";
 
-type Data = {
+export type Prediction = {
   prediction: number;
 };
 
 export default function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>
+  res: NextApiResponse<Prediction>
 ) {
   if (req.method === "POST") {
-      res.status(200).json({ prediction: 0.6 });
-  } else {
-      res.status(200).json({ prediction: 0.8 });
+    const form = formidable({
+      uploadDir: ".uploads",
+      keepExtensions: true,
+    });
+
+    form.parse(req);
+    res.status(200).json({ prediction: Math.random() });
   }
 }
+
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
