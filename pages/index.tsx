@@ -5,7 +5,15 @@ import Header from '../components/header'
 import Logs from '../components/logs'
 import TrafficLight from '../components/trafficLight'
 import Video from '../components/video'
+import { LogEntry } from '../models'
 import styles from '../styles/Home.module.css'
+
+const logs: LogEntry[] = [
+  {source: "camera1", time: new Date().toDateString()},
+  {source: "camera2", time: new Date().toDateString()},
+  {source: "camera3", time: new Date().toDateString()},
+  {source: "camera4", time: new Date().toDateString()},
+] 
 
 const Home: NextPage = () => {
   return (
@@ -20,7 +28,7 @@ const Home: NextPage = () => {
       <div className={styles.mainContainer}>
         <Video />
         <TrafficLight prediction={0.8}/>
-        <Logs />
+        <Logs logs={logs}/>
       </div>
     </div>
   );

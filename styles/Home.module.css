@@ -116,24 +116,21 @@
 }
 
 .mainContainer {
-  /* padding: 0 100px; */
   width: 80%;
   margin: auto;
   display: grid;
   grid-template-areas:
     'video video video'
     'video video video'
-    'video video video'
     'trafficLight trafficLight logs';
   gap: 40px;
-  /* height: 700px; */
 }
 
 .video {
   margin-top: 40px;
   background-color: lightgray;
   grid-area: video;
-  height: 400px;
+  min-height: 400px;
 }
 
 .trafficLight {
@@ -167,7 +164,18 @@
 
 .logs {
   grid-area: logs;
-  background-color: blue;
+  border: 1px solid lightblue;
+  padding-left: 10px;
+}
+
+.logsList {
+  overflow-y: auto;
+  max-height: 250px;
+  padding: 0 5px;
+}
+
+.logEntry {
+  border-bottom: 1px solid lightblue;
 }
 
 @media (max-width: 600px) {
