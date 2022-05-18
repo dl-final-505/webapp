@@ -15,6 +15,7 @@ const TrafficLight = ({ prediction }: Props) => {
           active={prediction > 0 && prediction <= 0.5}
         />
         <LightCircle
+          text="Suspicion of violence"
           color="orange"
           active={prediction > 0.5 && prediction <= 0.7}
         />
