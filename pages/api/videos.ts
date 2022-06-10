@@ -6,6 +6,7 @@ import { v4 as uuidV4 } from "uuid";
 export type Prediction = {
   prediction: number;
   id: string;
+  time:  string;
 };
 
 export default function handler(
@@ -14,6 +15,8 @@ export default function handler(
 ) {
   if (req.method === "POST") {
     const id = uuidV4();
+    const time = new Date().toDateString()
+
     const form = formidable({
       uploadDir: ".uploads",
       keepExtensions: true,
@@ -21,7 +24,7 @@ export default function handler(
     });
 
     form.parse(req);
-    res.status(200).json({ prediction: Math.random(), id });
+    res.status(200).json({ prediction: Math.random(), id, time});
   }
 }
 

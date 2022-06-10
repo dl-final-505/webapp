@@ -4,8 +4,11 @@ import styles from "../../styles/Home.module.css";
 
 const Streaming = ({
   onPrediction,
+   onSetLogs
 }: {
   onPrediction: (prediction: number) => void;
+  onSetLogs: ( source:string,time: string, violence: number, id: string)=>void;
+
 }) => {
   const video = useRef<HTMLVideoElement>(null);
 
@@ -25,6 +28,7 @@ const Streaming = ({
       .then((res) => res.json())
       .then((res: Prediction) => {
         onPrediction(res.prediction);
+        onSetLogs( 'camera1',res.time, res.prediction, res.id);
       });
   };
 

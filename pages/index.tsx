@@ -8,31 +8,29 @@ import Video from "../components/video/video";
 import { LogEntry } from "../models";
 import styles from "../styles/Home.module.css";
 
-const logsMock: LogEntry[] = [
-  { source: "camera1", time: new Date().toDateString() },
-  { source: "camera2", time: new Date().toDateString() },
-  { source: "camera3", time: new Date().toDateString() },
-  { source: "camera4", time: new Date().toDateString() },
-];
 
 const Home: NextPage = () => {
   const [prediction, setPrediction] = useState<number>(0);
   const [logs, setLogs] = useState<LogEntry[]>([]);
 
   const addNewLog = (
-    source: string,
+    source: string ,
     time: string,
     violence: number,
     id: string
   ) => {
     if (violence > 0.7) {
+      let predict :string =  (Math.round((violence + Number.EPSILON) * 100) / 100).toString()
+
       const log: LogEntry = {
         source,
         time,
         id,
+        violence: predict
       };
       setLogs((prevLogs) => [...prevLogs, log]);
     }
+
   };
 
   return (
@@ -44,7 +42,7 @@ const Home: NextPage = () => {
       </Head>
 
       <div className={styles.mainContainer}>
-        <Video onPrediction={setPrediction} />
+        <Video onPrediction={setPrediction} onSetLogs={addNewLog}/>
         <TrafficLight prediction={prediction} />
         <Logs logs={logs} />
       </div>
