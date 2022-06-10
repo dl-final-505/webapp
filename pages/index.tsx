@@ -8,7 +8,7 @@ import Video from "../components/video/video";
 import { LogEntry } from "../models";
 import styles from "../styles/Home.module.css";
 
-const logs: LogEntry[] = [
+const logsMock: LogEntry[] = [
   { source: "camera1", time: new Date().toDateString() },
   { source: "camera2", time: new Date().toDateString() },
   { source: "camera3", time: new Date().toDateString() },
@@ -17,6 +17,23 @@ const logs: LogEntry[] = [
 
 const Home: NextPage = () => {
   const [prediction, setPrediction] = useState<number>(0);
+  const [logs, setLogs] = useState<LogEntry[]>([]);
+
+  const addNewLog = (
+    source: string,
+    time: string,
+    violence: number,
+    id: string
+  ) => {
+    if (violence > 0.7) {
+      const log: LogEntry = {
+        source,
+        time,
+        id,
+      };
+      setLogs((prevLogs) => [...prevLogs, log]);
+    }
+  };
 
   return (
     <div className={styles.container}>
