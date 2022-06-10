@@ -8,7 +8,6 @@ const Streaming = ({
 }: {
   onPrediction: (prediction: number) => void;
   onSetLogs: ( source:string,time: string, violence: number, id: string)=>void;
-
 }) => {
   const video = useRef<HTMLVideoElement>(null);
 
@@ -23,6 +22,7 @@ const Streaming = ({
       method: "post",
       body: formData,
     };
+
 
     fetch(`/api/videos`, config)
       .then((res) => res.json())

@@ -44,7 +44,7 @@ const BasicModal = ({
                     <Typography id="modal-modal-title" variant="h6" component="h2">
                     </Typography>
                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        <video src={'.upload/'} controls loop autoPlay muted></video>
+                        <video src={path} controls loop autoPlay muted></video>
                     </Typography>
                     <Typography id="modal-modal-footer" sx={{ mt: 1}}>
                     <p>model predicted as violence in {prediction}</p>

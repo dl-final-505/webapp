@@ -14,7 +14,8 @@ const LogEntry = ({time, source,violence,id}: Props) => {
   const text = `Model predicts violence in ${source}, ${time}`;
   const [videoPath, setVideoPath] = React.useState('');
   const [open, setOpen] = React.useState(false);
-  const handleOpen = (id:string) => {setOpen(true) ;setVideoPath('https://github.com/dl-final-505/webapp/blob/noa-master/.uploads/e2bf3adc-e5b9-4316-8c46-47610cd404ac.mp4')};
+  let path="upload/"+id+".mp4";
+  const handleOpen = (id:string) => {setOpen(true) ;setVideoPath(path)};
   const handleClose = () => setOpen(false);
 
   return (
