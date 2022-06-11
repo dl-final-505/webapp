@@ -13,9 +13,12 @@ interface VideoFormElement extends HTMLFormElement {
 }
 
 const Video = ({
-  onPrediction,
+   onPrediction,
+    onSetLogs
 }: {
   onPrediction: (prediction: number) => void;
+  onSetLogs: ( source: string, time: string, violence: number, id: string, blob:Blob )=>void;
+
 }) => {
   const [videoStream, setVideoStream] = useState<string | undefined>();
   const [value, setValue] = useState(0);
@@ -72,7 +75,7 @@ const Video = ({
             <video src={videoStream} controls loop autoPlay muted></video>
           </>
         )}
-        {value === 1 && <Streaming onPrediction={onPrediction} />}
+        {value === 1 && <Streaming onPrediction={onPrediction} onSetLogs={onSetLogs}/>}
       </>
     </div>
   );

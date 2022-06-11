@@ -3,10 +3,12 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import formidable from "formidable";
 import type { File } from "formidable";
 import { v4 as uuidV4 } from "uuid";
+import { exec } from "node:child_process";
 
 export type Prediction = {
   prediction: number;
   id: string;
+  time:string
 };
 
 export default async function handler(
@@ -15,6 +17,7 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     const id = uuidV4();
+    const time = new Date().toDateString()
     const form = formidable({
       uploadDir: ".uploads",
       keepExtensions: true,
@@ -36,10 +39,19 @@ export default async function handler(
         }
         if (!file) return;
 
+        const mp4Path = `${file.filepath.substring(
+          0,
+          file.filepath.lastIndexOf(".")
+        )}.mp4`;
+
+        if (file.filepath.endsWith("webm")) {
+          exec(`ffmpeg -i ${file.filepath} ${mp4Path}`);
+        }
+
         const result = await fetch("http://127.0.0.1:5000/predict", {
           method: "POST",
           body: JSON.stringify({
-            path: file.filepath,
+            path: mp4Path,
           }),
           headers: {
             "Content-Type": "application/json",
@@ -47,8 +59,7 @@ export default async function handler(
         });
 
         const json = await result.json();
-
-        res.status(200).json({ prediction: json.prediction, id });
+        res.status(200).json({ prediction: json.prediction, id ,time});
 
         resolve(undefined);
       });
