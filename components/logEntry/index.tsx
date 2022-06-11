@@ -29,7 +29,7 @@ const LogEntry = ({ time, source, violence, id, blob }: Props) => {
     <div id={id} className={styles.logEntry}>
       <div style={{ paddingRight: "34px", marginInline: "12px" }}>
           {violence>0.7 ? (
-                  <LightCircle color="red" active={true}>
+                  <LightCircle  color="red" active={true}>
                   <PriorityHighIcon  fontSize="inherit" />
                   </LightCircle>
           ):(

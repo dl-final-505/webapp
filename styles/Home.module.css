@@ -100,7 +100,7 @@
 }
 
 .lightCircleContainer {
-  display: flex;
+  display: table-row;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -127,6 +127,7 @@
 
 .logs {
   grid-area: logs;
+  max-height: 100%;
   border: 1px solid lightblue;
   padding: 10px;
   background: #161d34;
@@ -136,7 +137,7 @@
 
 .logsList {
   overflow-y: scroll;
-  max-height: 300px;
+height:400px;
   padding: 0 5px;
 }
 

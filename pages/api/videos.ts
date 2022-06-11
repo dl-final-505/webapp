@@ -17,7 +17,11 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     const id = uuidV4();
-    const time = new Date().toDateString();
+    const today=new Date()
+    const day = today.toLocaleDateString();
+    const datetime = today.toLocaleTimeString();
+    let temp = day+' '+datetime
+    const time =temp
     const form = formidable({
       uploadDir: ".uploads",
       keepExtensions: true,
@@ -60,8 +64,7 @@ export default async function handler(
 
         const json = await result.json();
 
-        res.status(200).json({ prediction: json.prediction, id, time });
-
+        res.status(200).json({ prediction:Math.random(), id, time });
         resolve(undefined);
       });
 
@@ -69,7 +72,10 @@ export default async function handler(
         reject(error);
       });
     });
+
   }
+
+
 }
 
 export const config = {
