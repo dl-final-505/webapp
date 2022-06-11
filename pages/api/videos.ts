@@ -1,6 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 import formidable from "formidable";
+import type { File } from "formidable";
 import { v4 as uuidV4 } from "uuid";
 
 export type Prediction = {
@@ -20,15 +21,19 @@ export default async function handler(
       filename: (_, ext) => `${id}${ext}`,
     });
 
-    form.parse(req, async (err, fields, files) => {
-      console.log(files[0]);
-
-      console.log(`file uploaded: ${id}`);
+    form.parse(req, async (_err, _fields, files) => {
+      let file: File;
+      if (Array.isArray(files.video)) {
+        file = files.video[0];
+      } else {
+        file = files.video;
+      }
+      if (!file) return;
 
       const result = await fetch("http://127.0.0.1:5000/predict", {
         method: "POST",
         body: JSON.stringify({
-          path: `/Users/dorshinar/git/webapp/.uploads/${id}.mp4`,
+          path: file.filepath,
         }),
         headers: {
           "Content-Type": "application/json",
@@ -36,8 +41,6 @@ export default async function handler(
       });
 
       const json = await result.json();
-
-      console.log(`prediction: ${json.prediction}`);
 
       res.status(200).json({ prediction: json.prediction, id });
     });
