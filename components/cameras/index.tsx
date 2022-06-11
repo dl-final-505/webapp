@@ -6,13 +6,13 @@ const Cameras = () => {
     <div className={styles.cameras}>
       <div className={styles.camera}>
         <p>Camera 1</p>
-        <video loop autoPlay muted width="250">
+        <video loop autoPlay muted width="320" height="240">
           <source src="/Violence.mp4" />
         </video>
       </div>
       <div className={styles.camera}>
         <p>Camera 2</p>
-        <video loop autoPlay muted width="250">
+        <video loop autoPlay muted width="320" height="240">
           <source src="/NoViolence.mp4" />
         </video>
       </div>
