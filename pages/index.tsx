@@ -5,14 +5,14 @@ import Header from "../components/header";
 import Logs from "../components/logs";
 import TrafficLight from "../components/trafficLight";
 import Video from "../components/video/video";
-import { LogEntry } from "../models";
+import { LogEntry } from "../models/LogEntry";
 import styles from "../styles/Home.module.css";
 
 const logsMock: LogEntry[] = [
-  { source: "camera1", time: new Date().toDateString() },
-  { source: "camera2", time: new Date().toDateString() },
-  { source: "camera3", time: new Date().toDateString() },
-  { source: "camera4", time: new Date().toDateString() },
+  { id: "1", source: "camera1", time: new Date().toDateString() },
+  { id: "2", source: "camera2", time: new Date().toDateString() },
+  { id: "3", source: "camera3", time: new Date().toDateString() },
+  { id: "4", source: "camera4", time: new Date().toDateString() },
 ];
 
 const Home: NextPage = () => {

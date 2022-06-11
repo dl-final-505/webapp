@@ -8,7 +8,7 @@ export type Prediction = {
   id: string;
 };
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Prediction>
 ) {
@@ -17,11 +17,30 @@ export default function handler(
     const form = formidable({
       uploadDir: ".uploads",
       keepExtensions: true,
-      filename: () => `${id}.mp4`,
+      filename: (_, ext) => `${id}${ext}`,
     });
 
-    form.parse(req);
-    res.status(200).json({ prediction: Math.random(), id });
+    form.parse(req, async (err, fields, files) => {
+      console.log(files[0]);
+
+      console.log(`file uploaded: ${id}`);
+
+      const result = await fetch("http://127.0.0.1:5000/predict", {
+        method: "POST",
+        body: JSON.stringify({
+          path: `/Users/dorshinar/git/webapp/.uploads/${id}.mp4`,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const json = await result.json();
+
+      console.log(`prediction: ${json.prediction}`);
+
+      res.status(200).json({ prediction: json.prediction, id });
+    });
   }
 }
 
