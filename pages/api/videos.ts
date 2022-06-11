@@ -3,6 +3,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import formidable from "formidable";
 import type { File } from "formidable";
 import { v4 as uuidV4 } from "uuid";
+import { exec } from "node:child_process";
 
 export type Prediction = {
   prediction: number;
@@ -36,10 +37,19 @@ export default async function handler(
         }
         if (!file) return;
 
+        const mp4Path = `${file.filepath.substring(
+          0,
+          file.filepath.lastIndexOf(".")
+        )}.mp4`;
+
+        if (file.filepath.endsWith("webm")) {
+          exec(`ffmpeg -fflags +genpts -i ${file.filepath} -r 24 ${mp4Path}`);
+        }
+
         const result = await fetch("http://127.0.0.1:5000/predict", {
           method: "POST",
           body: JSON.stringify({
-            path: file.filepath,
+            path: mp4Path,
           }),
           headers: {
             "Content-Type": "application/json",
