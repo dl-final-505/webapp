@@ -3,7 +3,6 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  padding-bottom: 50px;
 }
 
 .header {
@@ -47,6 +46,8 @@
   grid-template-columns: 2fr 1fr;
   gap: 20px;
   padding: 16px 64px;
+  background: url("../public/bg.png") no-repeat center center fixed;
+  background-size: cover;
 }
 
 .disconnectedCamera {
@@ -78,13 +79,14 @@
   border-radius: 4px;
 }
 
-.camera video, .camera div {
+.camera video,
+.camera div {
   border-radius: 8px;
 }
 
 .video video {
   width: 100%;
-  max-height: 400px;
+  max-height: 500px;
   height: initial;
   flex-grow: 1;
 }
