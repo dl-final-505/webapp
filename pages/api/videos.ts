@@ -18,31 +18,44 @@ export default async function handler(
     const form = formidable({
       uploadDir: ".uploads",
       keepExtensions: true,
-      filename: (_, ext) => `${id}${ext}`,
+      filename: (fileName, ext) => {
+        if (fileName === "blob") {
+          return `${id}.webm`;
+        }
+        return `${id}${ext}`;
+      },
     });
 
-    form.parse(req, async (_err, _fields, files) => {
-      let file: File;
-      if (Array.isArray(files.video)) {
-        file = files.video[0];
-      } else {
-        file = files.video;
-      }
-      if (!file) return;
+    return new Promise((resolve, reject) => {
+      form.parse(req, async (_err, _fields, files) => {
+        let file: File;
+        if (Array.isArray(files.video)) {
+          file = files.video[0];
+        } else {
+          file = files.video;
+        }
+        if (!file) return;
 
-      const result = await fetch("http://127.0.0.1:5000/predict", {
-        method: "POST",
-        body: JSON.stringify({
-          path: file.filepath,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
+        const result = await fetch("http://127.0.0.1:5000/predict", {
+          method: "POST",
+          body: JSON.stringify({
+            path: file.filepath,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        const json = await result.json();
+
+        res.status(200).json({ prediction: json.prediction, id });
+
+        resolve(undefined);
       });
 
-      const json = await result.json();
-
-      res.status(200).json({ prediction: json.prediction, id });
+      form.on("error", (error) => {
+        reject(error);
+      });
     });
   }
 }
