@@ -6,7 +6,21 @@
 .header {
   width: 100%;
   height: 60px;
-  border-bottom: 1px solid gray;
+  background-color: #fff;
+  box-shadow: 0 1.6px 3.6px 0 rgb(0 0 0 / 13%), 0 0.3px 0.9px 0 rgb(0 0 0 / 11%);
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding: 0 50px;
+}
+
+.avatar {
+  border: 1px solid #4285F4;
+}
+
+.logo {
+  display: flex;
+  gap: 10px;
 }
 
 .title {
