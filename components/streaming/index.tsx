@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { Prediction } from "../../pages/api/videos";
 import styles from "../../styles/Home.module.css";
 
@@ -9,30 +9,36 @@ const Streaming = ({
 }) => {
   const video = useRef<HTMLVideoElement>(null);
 
-  const uploadVideo = (chunks: BlobPart[]) => {
-    const formData = new FormData();
-    const blob = new Blob(chunks, {
-      type: "video/webm",
-    });
-    formData.append("video", blob);
-
-    const config: RequestInit = {
-      method: "post",
-      body: formData,
-    };
-
-    fetch(`/api/videos`, config)
-      .then((res) => res.json())
-      .then((res: Prediction) => {
-        onPrediction(res.prediction);
+  const uploadVideo = useCallback(
+    (chunks: BlobPart[]) => {
+      const formData = new FormData();
+      const blob = new Blob(chunks, {
+        type: "video/webm",
       });
-  };
+      formData.append("video", blob);
 
-  const handleDataAvailable = (event: BlobEvent) => {
-    if (event.data.size > 0) {
-      uploadVideo([event.data]);
-    }
-  };
+      const config: RequestInit = {
+        method: "post",
+        body: formData,
+      };
+
+      fetch(`/api/videos`, config)
+        .then((res) => res.json())
+        .then((res: Prediction) => {
+          onPrediction(res.prediction);
+        });
+    },
+    [onPrediction]
+  );
+
+  const handleDataAvailable = useCallback(
+    (event: BlobEvent) => {
+      if (event.data.size > 0) {
+        uploadVideo([event.data]);
+      }
+    },
+    [uploadVideo]
+  );
 
   useEffect(() => {
     let timerId: any = null;
@@ -62,14 +68,14 @@ const Streaming = ({
       }
     };
 
-    timerId = setTimeout((event) => {
+    timerId = setTimeout(() => {
       stopAndStart();
     }, 4000);
 
     return () => {
       clearTimeout(timerId);
     };
-  }, []);
+  }, [handleDataAvailable]);
 
   return (
     <div className={styles.video}>
