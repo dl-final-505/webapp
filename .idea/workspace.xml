@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a9fe69b6-c65d-4c68-b879-5fde46d7bbd1" name="Changes" comment="log components" />
+    <list default="true" id="a9fe69b6-c65d-4c68-b879-5fde46d7bbd1" name="Changes" comment="log components">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/videoModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/videoModal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/videos.ts" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/videos.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,7 +22,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="noa-master" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -39,7 +44,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2ANcbQCVOoxcRAqEL9qKfoTBhxA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -82,6 +87,7 @@
       <workItem from="1654853563936" duration="13740000" />
       <workItem from="1654882942126" duration="19312000" />
       <workItem from="1654955458562" duration="1589000" />
+      <workItem from="1654957054680" duration="694000" />
     </task>
     <task id="LOCAL‎00001" summary="log component">
       <created>1654882068800</created>
@@ -119,7 +125,25 @@
       <option name="presentableId" value="LOCAL‎00006" />
       <updated>1654955118526</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL‎00007" summary="log components">
+      <created>1654957072114</created>
+      <option name="number" value="LOCAL‎00007" />
+      <option name="presentableId" value="LOCAL‎00007" />
+      <updated>1654957072114</updated>
+    </task>
+    <task id="LOCAL‎00008" summary="log components">
+      <created>1654957178521</created>
+      <option name="number" value="LOCAL‎00008" />
+      <option name="presentableId" value="LOCAL‎00008" />
+      <updated>1654957178521</updated>
+    </task>
+    <task id="LOCAL‎00009" summary="log components">
+      <created>1654957253576</created>
+      <option name="number" value="LOCAL‎00009" />
+      <option name="presentableId" value="LOCAL‎00009" />
+      <updated>1654957253576</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

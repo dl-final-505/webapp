@@ -5,7 +5,7 @@ import Header from "../components/header";
 import Logs from "../components/logs";
 import TrafficLight from "../components/trafficLight";
 import Video from "../components/video/video";
-import { LogEntry } from "../models";
+import { LogEntry } from "../models/LogEntry";
 import styles from "../styles/Home.module.css";
 import {blob} from "stream/consumers";
 

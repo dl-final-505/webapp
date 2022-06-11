@@ -8,6 +8,7 @@ import { exec } from "node:child_process";
 export type Prediction = {
   prediction: number;
   id: string;
+  time:string
 };
 
 export default async function handler(
@@ -16,6 +17,7 @@ export default async function handler(
 ) {
   if (req.method === "POST") {
     const id = uuidV4();
+    const time = new Date().toDateString()
     const form = formidable({
       uploadDir: ".uploads",
       keepExtensions: true,
@@ -57,8 +59,7 @@ export default async function handler(
         });
 
         const json = await result.json();
-
-        res.status(200).json({ prediction: json.prediction, id });
+        res.status(200).json({ prediction: json.prediction, id ,time});
 
         resolve(undefined);
       });

@@ -4,7 +4,7 @@ import ReactPlayer from 'react-player'
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import {LogEntry as LogEntryModel} from "../../models";
+import {LogEntry as LogEntryModel} from "../../models/LogEntry";
 import {type} from "os";
 import {useState} from "react";
 
