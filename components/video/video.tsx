@@ -1,9 +1,5 @@
-import { FormEvent, useCallback, useState } from "react";
-import { Prediction } from "../../pages/api/videos";
 import styles from "../../styles/Home.module.css";
 import Streaming from "../streaming";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 
 const Video = ({
   onPrediction,

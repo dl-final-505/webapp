@@ -15,30 +15,7 @@ interface VideoFormElement extends HTMLFormElement {
 
 const Upload = () => {
   const [prediction, setPrediction] = useState<number>(0);
-  const [logs, setLogs] = useState<LogEntry[]>([]);
-
-  const addNewLog = (
-    source: string,
-    time: string,
-    violence: number,
-    id: string,
-    blob: Blob
-  ) => {
-    if (violence > 0.7) {
-      let predict: string = (
-        Math.round((violence + Number.EPSILON) * 100) / 100
-      ).toString();
-
-      const log: LogEntry = {
-        source,
-        time,
-        id,
-        violence: predict,
-        blob,
-      };
-      setLogs((prevLogs) => [...prevLogs, log]);
-    }
-  };
+  const [logs] = useState<LogEntry[]>([]);
   const [videoStream, setVideoStream] = useState<string | undefined>();
 
   const submit = useCallback((e: FormEvent<VideoFormElement>) => {
