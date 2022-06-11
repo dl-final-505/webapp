@@ -1,5 +1,5 @@
 import styles from "../../styles/Home.module.css";
-import Streaming from "../streaming";
+import Streaming from "../streaming/Streaming";
 
 const Video = ({
   onPrediction,

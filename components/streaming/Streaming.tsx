@@ -31,13 +31,13 @@ const Streaming = ({
         body: formData,
       };
 
-      // fetch(`/api/videos`, config)
-      //   .then((res) => res.json())
-      //   .then((res: Prediction) => {
-      //     onPrediction(res.prediction);
-      //     console.log(blob);
-      //     onSetLogs("camera1", res.time, res.prediction, res.id, url);
-      //   });
+      fetch(`/api/videos`, config)
+        .then((res) => res.json())
+        .then((res: Prediction) => {
+          onPrediction(res.prediction);
+          console.log(blob);
+          onSetLogs("camera1", res.time, res.prediction, res.id, url);
+        });
     };
 
     const handleDataAvailable = (event: BlobEvent) => {
