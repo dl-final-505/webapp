@@ -6,6 +6,7 @@ import Logs from "../components/logs";
 import Video from "../components/video/video";
 import { LogEntry } from "../models/LogEntry";
 import styles from "../styles/Home.module.css";
+import Cameras from "../components/cameras";
 
 const Home: NextPage = () => {
   const [prediction, setPrediction] = useState<number>(0);
@@ -44,6 +45,7 @@ const Home: NextPage = () => {
       <Header />
       <div className={styles.mainContainer}>
         <Video onPrediction={setPrediction} onSetLogs={addNewLog} />
+        <Cameras />
         <Logs logs={logs} prediction={prediction} />
       </div>
     </div>
