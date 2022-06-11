@@ -3,11 +3,13 @@ import BasicModal from "../videoModal";
 import * as React from "react";
 import Button from "@mui/material/Button";
 import LightCircle from "../lightCircle";
+import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
+import {orange} from "@mui/material/colors";
 
 interface Props {
   time: string;
   source: string;
-  violence: string;
+  violence: number;
   id: string;
   blob: Blob;
 }
@@ -26,7 +28,16 @@ const LogEntry = ({ time, source, violence, id, blob }: Props) => {
   return (
     <div id={id} className={styles.logEntry}>
       <div style={{ paddingRight: "34px", marginInline: "12px" }}>
-        <LightCircle active={true} color="red" />
+          {violence>0.7 ? (
+                  <LightCircle color="red" active={true}>
+                  <PriorityHighIcon  fontSize="inherit" />
+                  </LightCircle>
+          ):(
+              <LightCircle color="orange" active={true}>
+              <PriorityHighIcon fontSize="inherit" />
+              </LightCircle>
+          )
+          }
       </div>
       <p>{text}</p>
       <Button className="btn-primary" onClick={() => handleOpen(id)}>

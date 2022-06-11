@@ -36,10 +36,7 @@
 }
 
 .mainContainer {
-  width: 90%;
   flex-grow: 1;
-  align-items: stretch;
-  margin: auto;
   display: grid;
   grid-template-areas:
     "video logs"
@@ -61,7 +58,6 @@
 }
 
 .video {
-  margin-top: 40px;
   grid-area: video;
   max-height: 500px;
   display: flex;
@@ -112,7 +108,7 @@
 }
 
 .lightCircle {
-  width: 90px;
+  width: 70px;
   aspect-ratio: 1;
   border-radius: 50%;
   opacity: 0.2;
@@ -127,32 +123,35 @@
 
 .logs {
   grid-area: logs;
+  max-height: 90%;
   border: 1px solid lightblue;
-  padding-left: 10px;
-  margin-top: 10px;
+  padding: 10px;
   background: #161d34;
   border-radius: 20px;
   color: azure;
 }
 
 .logsList {
-  overflow-y: auto;
-  max-height: 250px;
+  overflow-y: scroll;
+  max-height: 300px;
   padding: 0 5px;
 }
 
 .logEntry {
   border-bottom: 1px solid lightblue;
   border-bottom: 1px solid lightblue;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
   display: inline-flex;
   align-content: stretch;
   flex-direction: row;
   align-items: center;
 }
+
 .btn-primary {
   color: red;
 }
+
 .css-1wnsr1i {
   width: initial;
 }

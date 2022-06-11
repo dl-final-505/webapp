@@ -25,7 +25,7 @@ const BasicModal = ({
   open: boolean;
   handleClose: () => void;
   path: string;
-  prediction: string;
+  prediction: number;
   blob: Blob;
 }) => {
   console.log("blob type", blob);
