@@ -1,7 +1,7 @@
 export interface LogEntry {
-  violence:string;
+  violence: string;
   time: string;
   source: string;
   id: string;
-  blob:Blob;
+  blob: Blob;
 }

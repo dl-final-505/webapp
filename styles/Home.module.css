@@ -59,8 +59,7 @@
 .lightCircleContainer {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  width: 100%;
+  justify-content: space-between;
 }
 
 .lightCircleText {
@@ -70,10 +69,17 @@
 }
 
 .lightCircle {
+  width: 90px;
   aspect-ratio: 1;
-  background-color: white;
   border-radius: 50%;
-  border: 1px solid lightgray;
+  opacity: 0.2;
+  display: grid;
+  place-items: center;
+  font-size: 64px;
+}
+
+.light-circle-active {
+  opacity: 1;
 }
 
 .logs {

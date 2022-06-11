@@ -15,3 +15,15 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.green {
+  background: green;
+}
+
+.orange {
+  background: orange;
+}
+
+.red {
+  background: red;
+}
