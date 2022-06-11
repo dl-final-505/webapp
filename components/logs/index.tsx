@@ -1,4 +1,4 @@
-import  { LogEntry as LogEntryModel } from "../../models";
+import  { LogEntry as LogEntryModel } from "../../models/LogEntry";
 import styles from "../../styles/Home.module.css";
 import LogEntry from "../logEntry";
 import {useState} from "react";
