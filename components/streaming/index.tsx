@@ -17,8 +17,8 @@ const Streaming = ({
 }) => {
   const video = useRef<HTMLVideoElement>(null);
 
-  const uploadVideo = useCallback(
-    (chunks: BlobPart[], url: Blob) => {
+  useEffect(() => {
+    const uploadVideo = (chunks: BlobPart[], url: Blob) => {
       const formData = new FormData();
 
       const blob = new Blob(chunks, {
@@ -38,23 +38,16 @@ const Streaming = ({
           console.log(blob);
           onSetLogs("camera1", res.time, res.prediction, res.id, url);
         });
-    },
-    [onPrediction, onSetLogs]
-  );
+    };
 
-  const handleDataAvailable = useCallback(
-    (event: BlobEvent) => {
+    const handleDataAvailable = (event: BlobEvent) => {
       if (event.data.size > 0) {
         const blob = event.data;
 
         uploadVideo([event.data], blob);
-        console.log("url", blob);
       }
-    },
-    [uploadVideo]
-  );
+    };
 
-  useEffect(() => {
     let timerId: any = null;
     let recorder: MediaRecorder | null = null;
     if (navigator.mediaDevices.getUserMedia) {
@@ -69,9 +62,7 @@ const Streaming = ({
             recorder.start();
           }
         })
-        .catch(function (err0r) {
-          console.log("Something went wrong!");
-        });
+        .catch(() => console.log("Something went wrong!"));
     }
 
     const stopAndStart = () => {
@@ -82,14 +73,14 @@ const Streaming = ({
       }
     };
 
-    timerId = setTimeout((event) => {
+    timerId = setTimeout(() => {
       stopAndStart();
     }, 4000);
 
     return () => {
       clearTimeout(timerId);
     };
-  }, [handleDataAvailable]);
+  }, [onPrediction, onSetLogs]);
 
   return (
     <div className={styles.video}>
