@@ -28,6 +28,7 @@ export default async function handler(
         return `${id}${ext}`;
       },
     });
+    /*
 
     return new Promise((resolve, reject) => {
       form.parse(req, async (_err, _fields, files) => {
@@ -47,7 +48,7 @@ export default async function handler(
         if (file.filepath.endsWith("webm")) {
           exec(`ffmpeg -i ${file.filepath} ${mp4Path}`);
         }
-
+/*
         const result = await fetch("http://127.0.0.1:5000/predict", {
           method: "POST",
           body: JSON.stringify({
@@ -58,16 +59,19 @@ export default async function handler(
           },
         });
 
+
         const json = await result.json();
-        res.status(200).json({ prediction: json.prediction, id ,time});
 
-        resolve(undefined);
-      });
+ */
+        res.status(200).json({ prediction: Math.random(), id ,time});
 
-      form.on("error", (error) => {
-        reject(error);
-      });
-    });
+       // resolve(undefined);
+    //  });
+
+   //   form.on("error", (error) => {
+     //   reject(error);
+    //  });
+   // });
   }
 }
 

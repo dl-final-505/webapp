@@ -69,7 +69,7 @@
 }
 
 .lightCircle {
-  width: 90px;
+  width: 70px;
   aspect-ratio: 1;
   border-radius: 50%;
   opacity: 0.2;
@@ -84,6 +84,7 @@
 
 .logs {
   grid-area: logs;
+  max-height: 90%;
   border: 1px solid lightblue;
   padding: 10px;
   background: #161d34;
@@ -92,15 +93,16 @@
 }
 
 .logsList {
-  overflow-y: auto;
-  max-height: 250px;
+  overflow-y: scroll;
+  max-height: 300px;
   padding: 0 5px;
 }
 
 .logEntry {
   border-bottom: 1px solid lightblue;
   border-bottom: 1px solid lightblue;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
+  padding-top: 20px;
   display: inline-flex;
   align-content: stretch;
   flex-direction: row;

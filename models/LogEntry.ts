@@ -1,5 +1,5 @@
 export interface LogEntry {
-  violence: string;
+  violence: number;
   time: string;
   source: string;
   id: string;

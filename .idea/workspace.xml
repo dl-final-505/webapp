@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a9fe69b6-c65d-4c68-b879-5fde46d7bbd1" name="Changes" comment="log component and popup" />
+    <list default="true" id="a9fe69b6-c65d-4c68-b879-5fde46d7bbd1" name="Changes" comment="log component and popup">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/logEntry/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/logEntry/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/videoModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/videoModal/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/LogEntry.ts" beforeDir="false" afterPath="$PROJECT_DIR$/models/LogEntry.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/videos.ts" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/videos.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/styles/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Home.module.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,14 +34,14 @@
     <option name="defaultAccountId" value="8e93cd2f-e20e-4bfb-8934-6983040b111f" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/components/logs/index.tsx" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pages/api/videos.ts" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/components/logEntry/index.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/styles/globals.css" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/styles/Home.module.css" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/.vscode/launch.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/logs/index.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pages/index.tsx" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/components/video/video.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/components/logEntry/index.tsx" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pages/api/videos.ts" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -58,7 +66,7 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
-    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="ReaderModeSettings">
@@ -83,6 +91,7 @@
       <workItem from="1654882942126" duration="19312000" />
       <workItem from="1654955458562" duration="1589000" />
       <workItem from="1654957054680" duration="694000" />
+      <workItem from="1654958666968" duration="3227000" />
     </task>
     <task id="LOCAL‎00001" summary="log component">
       <created>1654882068800</created>

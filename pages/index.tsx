@@ -6,6 +6,8 @@ import Logs from "../components/logs";
 import Video from "../components/video/video";
 import { LogEntry } from "../models/LogEntry";
 import styles from "../styles/Home.module.css";
+import {blob} from "stream/consumers";
+
 
 const Home: NextPage = () => {
   const [prediction, setPrediction] = useState<number>(0);
