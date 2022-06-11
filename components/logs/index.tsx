@@ -1,30 +1,36 @@
-import  { LogEntry as LogEntryModel } from "../../models/LogEntry";
+import { LogEntry as LogEntryModel } from "../../models/LogEntry";
 import styles from "../../styles/Home.module.css";
 import LogEntry from "../logEntry";
-import {useState} from "react";
+import { useState } from "react";
 import BasicModal from "../videoModal";
 import * as React from "react";
-import TrafficLight from "../trafficLight";
+import TrafficLight from "../trafficLight/trafficLight";
 
 interface Props {
   logs: LogEntryModel[];
-  prediction:number
+  prediction: number;
 }
 
-
-const Logs = ({logs = [],prediction}: Props,) => {
-
-    return (
+const Logs = ({ logs = [], prediction }: Props) => {
+  return (
     <div className={styles.logs}>
-        <TrafficLight prediction={prediction} />
+      <TrafficLight prediction={prediction} />
       <h3>Log events</h3>
       <div className={styles.logsList}>
-        {logs.map(({time, source,violence,id,blob}, index) => {
-
-          return (
-            <LogEntry key={index} source={source} time={time} violence={violence} id={id} blob={blob}/>
-          );
-        }).reverse()}
+        {logs
+          .map(({ time, source, violence, id, blob }, index) => {
+            return (
+              <LogEntry
+                key={index}
+                source={source}
+                time={time}
+                violence={violence}
+                id={id}
+                blob={blob}
+              />
+            );
+          })
+          .reverse()}
       </div>
     </div>
   );

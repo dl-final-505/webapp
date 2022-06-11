@@ -9,7 +9,7 @@ interface Props {
 
 const TrafficLight = ({ prediction }: Props) => {
   return (
-    <div>
+    <>
       <div className={styles.lightCirclesContainer}>
         <LightCircle color="green" active={prediction > 0 && prediction <= 0.5}>
           <CheckIcon fontSize="inherit" />
@@ -27,7 +27,7 @@ const TrafficLight = ({ prediction }: Props) => {
       <h3 className={styles.lightCircleText}>
         Prediction score = {Math.round(prediction * 100)}%
       </h3>
-    </div>
+    </>
   );
 };
 

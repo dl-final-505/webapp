@@ -3,38 +3,35 @@ import Head from "next/head";
 import { useState } from "react";
 import Header from "../components/header";
 import Logs from "../components/logs";
-import TrafficLight from "../components/trafficLight";
 import Video from "../components/video/video";
 import { LogEntry } from "../models/LogEntry";
 import styles from "../styles/Home.module.css";
-import {blob} from "stream/consumers";
-
 
 const Home: NextPage = () => {
   const [prediction, setPrediction] = useState<number>(0);
   const [logs, setLogs] = useState<LogEntry[]>([]);
 
   const addNewLog = (
-    source: string ,
+    source: string,
     time: string,
     violence: number,
     id: string,
-  blob:Blob
-
-) => {
+    blob: Blob
+  ) => {
     if (violence > 0.7) {
-      let predict :string =  (Math.round((violence + Number.EPSILON) * 100) / 100).toString()
+      let predict: string = (
+        Math.round((violence + Number.EPSILON) * 100) / 100
+      ).toString();
 
       const log: LogEntry = {
         source,
         time,
         id,
         violence: predict,
-        blob
+        blob,
       };
       setLogs((prevLogs) => [...prevLogs, log]);
     }
-
   };
 
   return (
@@ -46,7 +43,7 @@ const Home: NextPage = () => {
       </Head>
       <Header />
       <div className={styles.mainContainer}>
-        <Video onPrediction={setPrediction} onSetLogs={addNewLog}/>
+        <Video onPrediction={setPrediction} onSetLogs={addNewLog} />
         <Logs logs={logs} prediction={prediction} />
       </div>
     </div>
