@@ -7,7 +7,7 @@ interface Props {
 
 const TrafficLight = ({ prediction }: Props) => {
   return (
-    <div className={styles.trafficLight}>
+    <div>
       <div className={styles.lightCirclesContainer}>
         <LightCircle
           text="All safe"

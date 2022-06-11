@@ -20,14 +20,14 @@
 
 .mainContainer {
   width: 90%;
-  height:95%;
+  height: 95%;
   align-items: stretch;
   margin: auto;
   display: grid;
   grid-template-areas:
     "video logs"
     "video logs"
-      "video logs";
+    "video logs";
 
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 2fr 1fr;
@@ -47,11 +47,6 @@
   max-height: 400px;
   height: initial;
   flex-grow: 1;
-}
-
-.trafficLight {
-  border: 1px solid lightblue;
-  width: 100%;
 }
 
 .lightCirclesContainer {
@@ -85,12 +80,11 @@
   grid-area: logs;
   border: 1px solid lightblue;
   padding-left: 10px;
-  margin-top:10px;
-  background: #161D34;
+  margin-top: 10px;
+  background: #161d34;
   border-radius: 20px;
   color: azure;
 }
-
 
 .logsList {
   overflow-y: auto;
@@ -111,8 +105,5 @@
   color: red;
 }
 .css-1wnsr1i {
-  width:initial;
+  width: initial;
 }
-
-
-
