@@ -1,0 +1,37 @@
+Index: components/logEntry/index.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import styles from \"../../styles/Home.module.css\";\nimport BasicModal from \"../videoModal\";\nimport * as React from \"react\";\nimport Button from \"@mui/material/Button\";\n\ninterface Props {\n  time: string;\n  source: string;\n  violence:string;\n  id:string;\n}\n\nconst LogEntry = ({time, source,violence,id}: Props) => {\n  const text = `Model predicts violence in ${source}, ${time}`;\n  const [videoPath, setVideoPath] = React.useState('');\n  const [open, setOpen] = React.useState(false);\n  const handleOpen = (id:string) => {setOpen(true) ;setVideoPath('/Users/noashafir/WebstormProjects/webapp/.uploads/0a0257e9-a436-41b8-9567-fd54fca73812.mp4')};\n  const handleClose = () => setOpen(false);\n\n  return (\n      <div id={id} className={styles.logEntry}>\n    <p>\n      {text}\n    </p>\n        <Button className=\"btn-primary\" onClick={()=> handleOpen(id)}>VIEW DEMO</Button>\n        <BasicModal open={open} handleClose={handleClose} path={videoPath} prediction={violence}/>\n      </div>\n  );\n};\n\nexport default LogEntry;\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/components/logEntry/index.tsx b/components/logEntry/index.tsx
+--- a/components/logEntry/index.tsx	
++++ b/components/logEntry/index.tsx	
+@@ -14,7 +14,8 @@
+   const text = `Model predicts violence in ${source}, ${time}`;
+   const [videoPath, setVideoPath] = React.useState('');
+   const [open, setOpen] = React.useState(false);
+-  const handleOpen = (id:string) => {setOpen(true) ;setVideoPath('/Users/noashafir/WebstormProjects/webapp/.uploads/0a0257e9-a436-41b8-9567-fd54fca73812.mp4')};
++  let path=".upload/"+id+".mp4";
++  const handleOpen = (id:string) => {setOpen(true) ;setVideoPath(path)}
+   const handleClose = () => setOpen(false);
+ 
+   return (
+Index: components/videoModal/index.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import * as React from 'react';\nimport Box from '@mui/material/Box';\nimport Button from '@mui/material/Button';\nimport Typography from '@mui/material/Typography';\nimport Modal from '@mui/material/Modal';\nimport {LogEntry as LogEntryModel} from \"../../models\";\n\nconst style = {\n    position: 'absolute' as 'absolute',\n    top: '50%',\n    left: '50%',\n    transform: 'translate(-50%, -50%)',\n    width: 400,\n    bgcolor: 'background.paper',\n    border: '2px solid #000',\n    boxShadow: 24,\n    p: 4,\n};\n\nconst BasicModal = ({\n                   open,\n                   handleClose,\n                    path,\n                    prediction,\n               }: {\n    open:boolean\n    handleClose: ()=>void;\n    path:string\n    prediction:string\n\n}) => {\n\n\n    return (\n        <div>\n            <Modal\n                id={path}\n                open={open}\n                onClose={handleClose}\n                aria-labelledby=\"modal-modal-title\"\n                aria-describedby=\"modal-modal-description\"\n            >\n                <Box sx={style}>\n                    <Typography id=\"modal-modal-title\" variant=\"h6\" component=\"h2\">\n                    </Typography>\n                    <Typography id=\"modal-modal-description\" sx={{ mt: 2 }}>\n                        <video src={'.upload/'} controls loop autoPlay muted></video>\n                    </Typography>\n                    <Typography id=\"modal-modal-footer\" sx={{ mt: 1}}>\n                    <p>model predicted as violence in {prediction}</p>\n                    </Typography>\n                </Box>\n            </Modal>\n        </div>\n    );\n}\n\nexport default BasicModal;
+===================================================================
+diff --git a/components/videoModal/index.tsx b/components/videoModal/index.tsx
+--- a/components/videoModal/index.tsx	
++++ b/components/videoModal/index.tsx	
+@@ -44,7 +44,7 @@
+                     <Typography id="modal-modal-title" variant="h6" component="h2">
+                     </Typography>
+                     <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+-                        <video src={'.upload/'} controls loop autoPlay muted></video>
++                        <video src={'.upload/e2bf3adc-e5b9-4316-8c46-47610cd404ac.mp4'} controls loop autoPlay muted></video>
+                     </Typography>
+                     <Typography id="modal-modal-footer" sx={{ mt: 1}}>
+                     <p>model predicted as violence in {prediction}</p>
