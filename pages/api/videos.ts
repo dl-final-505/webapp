@@ -43,7 +43,7 @@ export default async function handler(
         )}.mp4`;
 
         if (file.filepath.endsWith("webm")) {
-          exec(`ffmpeg -fflags +genpts -i ${file.filepath} -r 24 ${mp4Path}`);
+          exec(`ffmpeg -i ${file.filepath} ${mp4Path}`);
         }
 
         const result = await fetch("http://127.0.0.1:5000/predict", {
