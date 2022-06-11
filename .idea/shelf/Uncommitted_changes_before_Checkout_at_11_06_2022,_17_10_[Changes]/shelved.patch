@@ -1,0 +1,18 @@
+Index: models/LogEntry.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>export interface LogEntry {\n  time: string;\n  source: string;\n  id?: string;\n}
+===================================================================
+diff --git a/models/LogEntry.ts b/models/LogEntry.ts
+--- a/models/LogEntry.ts	
++++ b/models/LogEntry.ts	
+@@ -1,5 +1,7 @@
+ export interface LogEntry {
++  violence:string;
+   time: string;
+   source: string;
+-  id?: string;
++  id: string;
++  blob:Blob;
+ }
+\ No newline at end of file
