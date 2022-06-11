@@ -1,44 +1,54 @@
-import { useCallback, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Prediction } from "../../pages/api/videos";
 import styles from "../../styles/Home.module.css";
 
 const Streaming = ({
   onPrediction,
+   onSetLogs
 }: {
   onPrediction: (prediction: number) => void;
+  onSetLogs: ( source:string,time: string, violence: number, id: string, blob:Blob )=>void;
 }) => {
   const video = useRef<HTMLVideoElement>(null);
 
-  const uploadVideo = useCallback(
-    (chunks: BlobPart[]) => {
-      const formData = new FormData();
-      const blob = new Blob(chunks, {
-        type: "video/webm",
+
+  const uploadVideo = (chunks: BlobPart[],url:Blob) => {
+    const formData = new FormData();
+
+
+    const blob = new Blob(chunks, {
+      type: "video/webm",
+    });
+    formData.append("video", blob);
+
+    const config: RequestInit = {
+      method: "post",
+      body: formData,
+    };
+
+
+    fetch(`/api/videos`, config)
+      .then((res) => res.json())
+      .then((res: Prediction) => {
+        onPrediction(res.prediction);
+        console.log(blob)
+        onSetLogs( 'camera1',res.time, res.prediction, res.id,url);
+
+
       });
-      formData.append("video", blob);
+  };
 
-      const config: RequestInit = {
-        method: "post",
-        body: formData,
-      };
+  const handleDataAvailable = (event: BlobEvent) => {
+    if (event.data.size > 0) {
+      const blob=event.data
 
-      fetch(`/api/videos`, config)
-        .then((res) => res.json())
-        .then((res: Prediction) => {
-          onPrediction(res.prediction);
-        });
-    },
-    [onPrediction]
-  );
+      uploadVideo([event.data],blob);
+      console.log('url',blob)
 
-  const handleDataAvailable = useCallback(
-    (event: BlobEvent) => {
-      if (event.data.size > 0) {
-        uploadVideo([event.data]);
-      }
-    },
-    [uploadVideo]
-  );
+
+
+    }
+  };
 
   useEffect(() => {
     let timerId: any = null;
@@ -68,18 +78,18 @@ const Streaming = ({
       }
     };
 
-    timerId = setTimeout(() => {
+    timerId = setTimeout((event) => {
       stopAndStart();
     }, 4000);
 
     return () => {
       clearTimeout(timerId);
     };
-  }, [handleDataAvailable]);
+  }, []);
 
   return (
     <div className={styles.video}>
-      <video
+      <video height={'initial'}
         ref={video}
         autoPlay={true}
         className={styles.videoElement}

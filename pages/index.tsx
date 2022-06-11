@@ -5,34 +5,36 @@ import Header from "../components/header";
 import Logs from "../components/logs";
 import TrafficLight from "../components/trafficLight";
 import Video from "../components/video/video";
-import { LogEntry } from "../models/LogEntry";
+import { LogEntry } from "../models";
 import styles from "../styles/Home.module.css";
+import {blob} from "stream/consumers";
 
-const logsMock: LogEntry[] = [
-  { id: "1", source: "camera1", time: new Date().toDateString() },
-  { id: "2", source: "camera2", time: new Date().toDateString() },
-  { id: "3", source: "camera3", time: new Date().toDateString() },
-  { id: "4", source: "camera4", time: new Date().toDateString() },
-];
 
 const Home: NextPage = () => {
   const [prediction, setPrediction] = useState<number>(0);
   const [logs, setLogs] = useState<LogEntry[]>([]);
 
   const addNewLog = (
-    source: string,
+    source: string ,
     time: string,
     violence: number,
-    id: string
-  ) => {
+    id: string,
+  blob:Blob
+
+) => {
     if (violence > 0.7) {
+      let predict :string =  (Math.round((violence + Number.EPSILON) * 100) / 100).toString()
+
       const log: LogEntry = {
         source,
         time,
         id,
+        violence: predict,
+        blob
       };
       setLogs((prevLogs) => [...prevLogs, log]);
     }
+
   };
 
   return (
@@ -44,9 +46,8 @@ const Home: NextPage = () => {
       </Head>
 
       <div className={styles.mainContainer}>
-        <Video onPrediction={setPrediction} />
-        <TrafficLight prediction={prediction} />
-        <Logs logs={logs} />
+        <Video onPrediction={setPrediction} onSetLogs={addNewLog}/>
+        <Logs logs={logs} prediction={prediction} />
       </div>
     </div>
   );
