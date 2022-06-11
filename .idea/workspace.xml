@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a9fe69b6-c65d-4c68-b879-5fde46d7bbd1" name="Changes" comment="log components">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/videoModal/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/videoModal/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/api/videos.ts" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/videos.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
-    </list>
+    <list default="true" id="a9fe69b6-c65d-4c68-b879-5fde46d7bbd1" name="Changes" comment="log component and popup" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -143,7 +138,13 @@
       <option name="presentableId" value="LOCAL‎00009" />
       <updated>1654957253576</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL‎00010" summary="log component and popup">
+      <created>1654958188406</created>
+      <option name="number" value="LOCAL‎00010" />
+      <option name="presentableId" value="LOCAL‎00010" />
+      <updated>1654958188406</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,6 +174,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="log component" />
     <MESSAGE value="log components" />
-    <option name="LAST_COMMIT_MESSAGE" value="log components" />
+    <MESSAGE value="log component and popup" />
+    <option name="LAST_COMMIT_MESSAGE" value="log component and popup" />
   </component>
 </project>
