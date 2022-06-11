@@ -17,7 +17,7 @@ const Video = ({
     onSetLogs
 }: {
   onPrediction: (prediction: number) => void;
-  onSetLogs: ( source: string, time: string, violence: number, id: string)=>void;
+  onSetLogs: ( source: string, time: string, violence: number, id: string, blob:Blob )=>void;
 
 }) => {
   const [videoStream, setVideoStream] = useState<string | undefined>();

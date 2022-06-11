@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Prediction } from "../../pages/api/videos";
 import styles from "../../styles/Home.module.css";
 
@@ -7,12 +7,15 @@ const Streaming = ({
    onSetLogs
 }: {
   onPrediction: (prediction: number) => void;
-  onSetLogs: ( source:string,time: string, violence: number, id: string)=>void;
+  onSetLogs: ( source:string,time: string, violence: number, id: string, blob:Blob )=>void;
 }) => {
   const video = useRef<HTMLVideoElement>(null);
 
-  const uploadVideo = (chunks: BlobPart[]) => {
+
+  const uploadVideo = (chunks: BlobPart[],url:Blob) => {
     const formData = new FormData();
+
+
     const blob = new Blob(chunks, {
       type: "video/webm",
     });
@@ -28,13 +31,22 @@ const Streaming = ({
       .then((res) => res.json())
       .then((res: Prediction) => {
         onPrediction(res.prediction);
-        onSetLogs( 'camera1',res.time, res.prediction, res.id);
+        console.log(blob)
+        onSetLogs( 'camera1',res.time, res.prediction, res.id,url);
+
+
       });
   };
 
   const handleDataAvailable = (event: BlobEvent) => {
     if (event.data.size > 0) {
-      uploadVideo([event.data]);
+      const blob=event.data
+
+      uploadVideo([event.data],blob);
+      console.log('url',blob)
+
+
+
     }
   };
 
@@ -77,7 +89,7 @@ const Streaming = ({
 
   return (
     <div className={styles.video}>
-      <video
+      <video height={'initial'}
         ref={video}
         autoPlay={true}
         className={styles.videoElement}

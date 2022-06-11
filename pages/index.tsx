@@ -7,6 +7,7 @@ import TrafficLight from "../components/trafficLight";
 import Video from "../components/video/video";
 import { LogEntry } from "../models";
 import styles from "../styles/Home.module.css";
+import {blob} from "stream/consumers";
 
 
 const Home: NextPage = () => {
@@ -17,8 +18,10 @@ const Home: NextPage = () => {
     source: string ,
     time: string,
     violence: number,
-    id: string
-  ) => {
+    id: string,
+  blob:Blob
+
+) => {
     if (violence > 0.7) {
       let predict :string =  (Math.round((violence + Number.EPSILON) * 100) / 100).toString()
 
@@ -26,7 +29,8 @@ const Home: NextPage = () => {
         source,
         time,
         id,
-        violence: predict
+        violence: predict,
+        blob
       };
       setLogs((prevLogs) => [...prevLogs, log]);
     }
@@ -43,8 +47,7 @@ const Home: NextPage = () => {
 
       <div className={styles.mainContainer}>
         <Video onPrediction={setPrediction} onSetLogs={addNewLog}/>
-        <TrafficLight prediction={prediction} />
-        <Logs logs={logs} />
+        <Logs logs={logs} prediction={prediction} />
       </div>
     </div>
   );

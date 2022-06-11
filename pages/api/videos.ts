@@ -2,11 +2,14 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import formidable from "formidable";
 import { v4 as uuidV4 } from "uuid";
+import video from "../../components/video/video";
 
 export type Prediction = {
   prediction: number;
   id: string;
   time:  string;
+  //file: NextApiRequest;
+
 };
 
 export default function handler(
@@ -30,6 +33,6 @@ export default function handler(
 
 export const config = {
   api: {
-    bodyParser: false,
+    bodyParser: true,
   },
 };
