@@ -19,7 +19,7 @@ const Home: NextPage = () => {
     id: string,
     blob: Blob
   ) => {
-    if (violence > 0.7) {
+    if (violence > 0.5) {
       let predict = Math.round((violence + Number.EPSILON) * 100) / 100;
 
       const log: LogEntry = {
