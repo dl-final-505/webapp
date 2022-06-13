@@ -11,7 +11,7 @@ const TrafficLight = ({ prediction }: Props) => {
   return (
     <>
       <div className={styles.lightCirclesContainer}>
-        <LightCircle color="green" active={prediction > 0 && prediction <= 0.5}>
+        <LightCircle color="green" active={prediction <= 0.5}>
           <CheckIcon fontSize="inherit" />
         </LightCircle>
         <LightCircle
@@ -20,7 +20,7 @@ const TrafficLight = ({ prediction }: Props) => {
         >
           <PriorityHighIcon fontSize="inherit" />
         </LightCircle>
-        <LightCircle color="red" active={prediction > 0.7 && prediction <= 1}>
+        <LightCircle color="red" active={prediction > 0.7}>
           <PriorityHighIcon fontSize="inherit" />
         </LightCircle>
       </div>
