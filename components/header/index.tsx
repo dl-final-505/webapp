@@ -14,15 +14,6 @@ const Header = () => {
         <Image src={logoText} alt="logoText" />
       </div>
       <Stack spacing={4} direction="row" alignItems="center">
-        <IconButton aria-label="cart">
-          <Badge
-            color="primary"
-            badgeContent={5}
-            className={styles.notification}
-          >
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
         <Avatar className={styles.avatar}>
           <Image src={avatar} alt="Remy Sharp" layout="fill" />
         </Avatar>
