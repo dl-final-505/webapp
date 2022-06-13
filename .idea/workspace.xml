@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a9fe69b6-c65d-4c68-b879-5fde46d7bbd1" name="Changes" comment="logger final">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/api/videos.ts" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/videos.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Home.module.css" afterDir="false" />
+    <list default="true" id="a9fe69b6-c65d-4c68-b879-5fde46d7bbd1" name="Changes" comment="fix circle lights">
+      <change beforePath="$PROJECT_DIR$/components/logs/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/logs/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +86,7 @@
       <workItem from="1654955458562" duration="1589000" />
       <workItem from="1654957054680" duration="694000" />
       <workItem from="1654958666968" duration="10073000" />
-      <workItem from="1655137071521" duration="583000" />
+      <workItem from="1655137071521" duration="1066000" />
     </task>
     <task id="LOCAL‎00001" summary="log component">
       <created>1654882068800</created>
@@ -168,7 +166,13 @@
       <option name="presentableId" value="LOCAL‎00013" />
       <updated>1655053035918</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL‎00014" summary="fix circle lights">
+      <created>1655145580621</created>
+      <option name="number" value="LOCAL‎00014" />
+      <option name="presentableId" value="LOCAL‎00014" />
+      <updated>1655145580621</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -201,6 +205,7 @@
     <MESSAGE value="log component and popup" />
     <MESSAGE value="style log compo" />
     <MESSAGE value="logger final" />
-    <option name="LAST_COMMIT_MESSAGE" value="logger final" />
+    <MESSAGE value="fix circle lights" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix circle lights" />
   </component>
 </project>

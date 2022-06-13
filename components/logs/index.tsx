@@ -13,6 +13,7 @@ interface Props {
 }
 
 const Logs = ({ logs = [], prediction }: Props) => {
+    let txt="EyeVision_Report"+(new Date().toDateString())+".json"
   return (
 
     <div className={styles.logs}>
@@ -36,7 +37,14 @@ const Logs = ({ logs = [], prediction }: Props) => {
           .reverse()}
       </div>
         <div style={{textAlignLast: "center"}}>
-            <Button style={{marginTop:'20px' ,fontSize:'12px'}} variant="contained">Export To File</Button>
+
+            <Button style={{marginTop:'20px' ,fontSize:'12px'}} variant="contained" type="button"
+                    href={`data:text/json;charset=utf-8,${encodeURIComponent(
+                        JSON.stringify(logs)
+                    )}`}
+                    download={txt}
+            >
+                Export To File</Button>
         </div>ֿ
     </div>
 
