@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a9fe69b6-c65d-4c68-b879-5fde46d7bbd1" name="Changes" comment="style log compo">
+    <list default="true" id="a9fe69b6-c65d-4c68-b879-5fde46d7bbd1" name="Changes" comment="logger final">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/logEntry/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/logEntry/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/api/videos.ts" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/videos.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/redIcon.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/redIcon.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/Home.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/Home.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +87,8 @@
       <workItem from="1654882942126" duration="19312000" />
       <workItem from="1654955458562" duration="1589000" />
       <workItem from="1654957054680" duration="694000" />
-      <workItem from="1654958666968" duration="9139000" />
+      <workItem from="1654958666968" duration="10073000" />
+      <workItem from="1655137071521" duration="583000" />
     </task>
     <task id="LOCAL‎00001" summary="log component">
       <created>1654882068800</created>
@@ -164,7 +162,13 @@
       <option name="presentableId" value="LOCAL‎00012" />
       <updated>1654970527981</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL‎00013" summary="logger final">
+      <created>1655053035918</created>
+      <option name="number" value="LOCAL‎00013" />
+      <option name="presentableId" value="LOCAL‎00013" />
+      <updated>1655053035918</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,6 +200,7 @@
     <MESSAGE value="log components" />
     <MESSAGE value="log component and popup" />
     <MESSAGE value="style log compo" />
-    <option name="LAST_COMMIT_MESSAGE" value="style log compo" />
+    <MESSAGE value="logger final" />
+    <option name="LAST_COMMIT_MESSAGE" value="logger final" />
   </component>
 </project>

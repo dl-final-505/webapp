@@ -32,7 +32,6 @@ export default async function handler(
         return `${id}${ext}`;
       },
     });
-
     return new Promise((resolve, reject) => {
        form.parse(req, async (_err, _fields, files) => {
          let file: File;
@@ -72,8 +71,13 @@ export default async function handler(
 
    form.on("error", (error) => {
      reject(error);
+
+
    });
+
  });
+
+
 
 }
 
