@@ -5,6 +5,7 @@ import Header from "../components/header";
 import Logs from "../components/logs";
 import { LogEntry } from "../models/LogEntry";
 import styles from "../styles/Home.module.css";
+import {v4 as uuidV4} from "uuid";
 
 interface FormElements extends HTMLFormControlsCollection {
   video: HTMLInputElement;
@@ -15,8 +16,28 @@ interface VideoFormElement extends HTMLFormElement {
 
 const Upload = () => {
   const [prediction, setPrediction] = useState<number>(0);
-  const [logs] = useState<LogEntry[]>([]);
+  const [logs,setLogs] = useState<LogEntry[]>([]);
   const [videoStream, setVideoStream] = useState<string | undefined>();
+    const addNewLog = (
+        source: string,
+        time: string,
+        violence: number,
+        id: string,
+        blob: Blob
+    ) => {
+        if (violence > 0.5) {
+            let predict = Math.round((violence + Number.EPSILON) * 100) / 100;
+
+            const log: LogEntry = {
+                source,
+                time,
+                id,
+                violence: predict,
+                blob,
+            };
+            setLogs((prevLogs) => [...prevLogs, log]);
+        }
+    };
 
   const submit = useCallback((e: FormEvent<VideoFormElement>) => {
     e.preventDefault();
@@ -40,6 +61,7 @@ const Upload = () => {
         const src = URL.createObjectURL(videoFile);
         setVideoStream(src);
         setPrediction(res.prediction);
+        addNewLog('upload',new Date().toDateString(),res.prediction,uuidV4(),new Blob())
       });
   }, []);
 
